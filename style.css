@@ -87,13 +87,21 @@ main{
     0 10px 25px rgba(0,0,0,.05);
 
     transition:.25s;
+    
+    cursor:pointer;
 
 }
 
 .card:hover{
 
     transform:translateY(-3px);
+    
+.card:active{
 
+}
+
+    transform:scale(.98);
+    
 }
 
 .card span{
