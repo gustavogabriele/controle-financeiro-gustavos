@@ -168,26 +168,48 @@ function atualizarHistorico(){
     lancamentos
     .slice()
     .reverse()
-    .forEach(item=>{
+    .forEach((item, indice)=>{
 
         lista.innerHTML += `
 
         <div class="item">
 
-            <strong>${item.descricao}</strong>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
 
-            <br>
+                <div>
 
-            ${item.categoria}
+                    <strong>${item.descricao}</strong>
 
-            •
-            ${item.data}
+                    <br>
 
-            <span style="float:right;font-weight:bold;">
+                    ${item.categoria}
 
-                € ${item.valor.toFixed(2).replace(".",",")}
+                    •
 
-            </span>
+                    ${item.data}
+
+                </div>
+
+                <div style="text-align:right;">
+
+                    <strong>
+
+                        € ${item.valor.toFixed(2).replace(".",",")}
+
+                    </strong>
+
+                    <br><br>
+
+                    <button
+                        onclick="excluirLancamento(${lancamentos.length-1-indice})">
+
+                        🗑️ Excluir
+
+                    </button>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -266,3 +288,19 @@ document.getElementById("pesquisa").addEventListener("input", function () {
 atualizarDashboard();
 
 atualizarHistorico();
+
+function excluirLancamento(indice){
+
+    if(!confirm("Deseja excluir este lançamento?")){
+        return;
+    }
+
+    lancamentos.splice(indice,1);
+
+    salvarDados();
+
+    atualizarDashboard();
+
+    atualizarHistorico();
+
+}
