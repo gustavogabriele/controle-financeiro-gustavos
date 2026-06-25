@@ -398,6 +398,8 @@ card.querySelector(".btnExcluir")
         );
 
     });
+            
+    });
 
 }
 
