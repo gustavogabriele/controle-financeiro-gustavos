@@ -304,3 +304,26 @@ function excluirLancamento(indice){
     atualizarHistorico();
 
 }
+// ===============================
+// CONTROLE DAS ABAS
+// ===============================
+
+const abas = document.querySelectorAll(".aba");
+const paginas = document.querySelectorAll(".pagina");
+
+abas.forEach(botao => {
+
+    botao.addEventListener("click", () => {
+
+        abas.forEach(a => a.classList.remove("ativa"));
+        paginas.forEach(p => p.classList.remove("ativa"));
+
+        botao.classList.add("ativa");
+
+        document
+            .getElementById(botao.dataset.aba)
+            .classList.add("ativa");
+
+    });
+
+});
