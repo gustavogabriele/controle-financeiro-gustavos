@@ -331,29 +331,30 @@ function atualizarHistorico(){
 
     }
 
-   [...lancamentos]
-    .reverse()
-    .filter(item => {
+   const listaFiltrada =
+    [...lancamentos]
+        .filter(item => {
 
-    if(
-        mesSelecionado &&
-        !item.data.startsWith(mesSelecionado)
-    ){
+            const mesmoMes =
+                !mesSelecionado ||
+                item.data.substring(0,7) === mesSelecionado;
 
-        return false;
+            const mesmoTipo =
+                filtroAtual === "todos" ||
+                item.tipo === filtroAtual;
 
-    }
+            console.log({
+                data: item.data,
+                mesSelecionado,
+                mesmoMes,
+                mesmoTipo
+            });
 
-    if(filtroAtual === "todos"){
+            return mesmoMes && mesmoTipo;
 
-        return true;
-
-    }
-
-    return item.tipo === filtroAtual;
-
-})
-    .forEach(item=>{
+        })
+        .reverse();
+listaFiltrada.forEach(item=>{
 
             const card =
                 document.createElement("div");
