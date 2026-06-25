@@ -16,6 +16,7 @@ const STORAGE_CATEGORIAS = "cfg_categorias";
 
 let lancamentos = [];
 let idEmEdicao = null;
+let filtroAtual = "todos";
 
 // ===============================
 // CATEGORIAS PADRÃO
@@ -317,9 +318,20 @@ function atualizarHistorico(){
 
     }
 
-    [...lancamentos]
-        .reverse()
-        .forEach(item=>{
+   [...lancamentos]
+    .reverse()
+    .filter(item => {
+
+        if(filtroAtual === "todos"){
+
+            return true;
+
+        }
+
+        return item.tipo === filtroAtual;
+
+    })
+    .forEach(item=>{
 
             const card =
                 document.createElement("div");
@@ -602,7 +614,49 @@ abas.forEach(botao=>{
     });
 
 });
+// ===============================
+// FILTROS DO DASHBOARD
+// ===============================
 
+document
+    .getElementById("cardReceitas")
+    .addEventListener("click", () => {
+
+        filtroAtual = "receita";
+
+        atualizarHistorico();
+
+    });
+
+document
+    .getElementById("cardDespesas")
+    .addEventListener("click", () => {
+
+        filtroAtual = "despesa";
+
+        atualizarHistorico();
+
+    });
+
+document
+    .getElementById("cardPoupanca")
+    .addEventListener("click", () => {
+
+        filtroAtual = "poupanca";
+
+        atualizarHistorico();
+
+    });
+
+document
+    .getElementById("cardSaldo")
+    .addEventListener("click", () => {
+
+        filtroAtual = "todos";
+
+        atualizarHistorico();
+
+    });
 function inicializarSistema(){
 
     carregarDados();
