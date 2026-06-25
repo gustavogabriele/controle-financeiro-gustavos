@@ -621,7 +621,9 @@ abas.forEach(botao=>{
 document
     .getElementById("cardReceitas")
     .addEventListener("click", () => {
-
+        
+        alert("Receitas");
+        
         filtroAtual = "receita";
 
         atualizarHistorico();
