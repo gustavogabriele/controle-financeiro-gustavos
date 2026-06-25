@@ -409,3 +409,30 @@ footer{
     display:block;
 
 }
+.grafico{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-top:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.grafico h2{
+
+    margin-bottom:20px;
+
+    color:#1E3A8A;
+
+}
+
+#graficoCategorias{
+
+    max-height:420px;
+
+}
