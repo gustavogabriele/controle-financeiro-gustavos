@@ -512,10 +512,16 @@ function editarLancamento(id){
 alert("Editar clicado!");
 console.log(id);
     
-    const item =
-        lancamentos.find(
-            l => l.id === id
-        );
+    console.log("ID recebido:", id);
+
+console.log("Lançamentos:", lancamentos);
+
+const item =
+    lancamentos.find(
+        l => l.id === id
+    );
+
+console.log("Item encontrado:", item);
 
     if(!item){
 
