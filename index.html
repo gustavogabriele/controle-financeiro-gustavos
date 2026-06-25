@@ -1,211 +1,236 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Controle Financeiro dos Gustavos</title>
+    <meta charset="UTF-8">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-body{
-    background:#F3F4F6;
-    color:#111827;
-}
+    <title>Controle Financeiro dos Gustavos</title>
 
-header{
-    background:#1E3A8A;
-    color:white;
-    padding:24px;
-    text-align:center;
-}
+    <link
+        rel="stylesheet"
+        href="style.css">
 
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:20px;
-}
-
-.card{
-    background:white;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
-
-.valor{
-    font-size:32px;
-    font-weight:bold;
-    margin-top:10px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
-}
-
-.receita{
-    color:#10B981;
-}
-
-.despesa{
-    color:#EF4444;
-}
-
-.poupanca{
-    color:#2563EB;
-}
-
-button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:#1E3A8A;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-}
-
-button:hover{
-    opacity:.9;
-}
-</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Controle Financeiro dos Gustavos</h1>
+
+    <div class="logo">
+
+        <h1>Controle Financeiro dos Gustavos</h1>
+
+        <p>
+            Organize seu dinheiro de forma inteligente.
+        </p>
+
+    </div>
+
 </header>
 
-<div class="container">
+<main>
 
-    <div class="grid">
+    <section class="dashboard">
 
-        <div class="card">
-            <h3>Receitas</h3>
-            <div class="valor receita">€ 0,00</div>
+        <div class="card receita">
+
+            <span>Receitas</span>
+
+            <h2 id="totalReceitas">
+                € 0,00
+            </h2>
+
         </div>
 
-        <div class="card">
-            <h3>Despesas</h3>
-            <div class="valor despesa">€ 0,00</div>
+        <div class="card despesa">
+
+            <span>Despesas</span>
+
+            <h2 id="totalDespesas">
+                € 0,00
+            </h2>
+
         </div>
 
-        <div class="card">
-            <h3>Patrimônio</h3>
-            <div class="valor poupanca">€ 0,00</div>
+        <div class="card poupanca">
+
+            <span>Poupança</span>
+
+            <h2 id="totalPoupanca">
+                € 0,00
+            </h2>
+
         </div>
 
-    </div>
+        <div class="card saldo">
 
-    <div class="card">
-        <h2>Bem-vindo!</h2>
-        <br>
-        <p>
-            Esta é a primeira versão do Controle Financeiro dos Gustavos.
-        </p>
-        <br>
-        <p>
-            Em breve teremos:
-        </p>
+            <span>Saldo Disponível</span>
 
-        <ul style="margin-left:20px;margin-top:10px;">
-            <li>Receitas</li>
-            <li>Despesas</li>
-            <li>Metas</li>
-            <li>Patrimônio</li>
-            <li>Gráficos</li>
-            <li>Categorias Inteligentes</li>
-        </ul>
+            <h2 id="saldoDisponivel">
+                € 0,00
+            </h2>
 
-        <br>
+        </div>
 
-        <button onclick="mostrarFormulario()">
-    Novo Lançamento
-</button>
+    </section>
 
-<div id="formulario" style="display:none;margin-top:20px;">
+    <section class="novo-lancamento">
 
-    <h3>Novo Lançamento</h3>
+        <h2>
+            Novo Lançamento
+        </h2>
 
-    <br>
+        <div class="campo">
 
-    <label>Tipo</label>
+            <label>
 
-    <select id="tipo" style="width:100%;padding:10px;margin-top:5px;">
-        <option value="receita">Receita</option>
-        <option value="despesa">Despesa</option>
-    </select>
+                Tipo
 
-    <br><br>
+            </label>
 
-    <label>Valor (€)</label>
+            <select id="tipo">
 
-    <input
-        id="valor"
-        type="number"
-        step="0.01"
-        style="width:100%;padding:10px;margin-top:5px;"
-    >
+                <option value="receita">
+                    Receita
+                </option>
 
-    <br><br>
+                <option value="despesa">
+                    Despesa
+                </option>
 
-    <label>Descrição</label>
+                <option value="poupanca">
+                    Poupança
+                </option>
 
-    <input
-        id="descricao"
-        type="text"
-        style="width:100%;padding:10px;margin-top:5px;"
-    >
+            </select>
 
-    <br><br>
+        </div>
 
-    <button onclick="salvarLancamento()">
-        Salvar
-    </button>
+        <div class="campo">
 
-</div>
+            <label>
 
-<script>
+                Valor (€)
 
-function mostrarFormulario(){
-    document.getElementById("formulario").style.display="block";
-}
+            </label>
 
-function salvarLancamento(){
+            <input
+                id="valor"
+                type="number"
+                step="0.01"
+                placeholder="0,00">
 
-    const tipo =
-        document.getElementById("tipo").value;
+        </div>
 
-    const valor =
-        document.getElementById("valor").value;
+        <div class="campo">
 
-    const descricao =
-        document.getElementById("descricao").value;
+            <label>
 
-    alert(
-        "Lançamento salvo!\\n\\n" +
-        tipo + "\\n" +
-        "€ " + valor + "\\n" +
-        descricao
-    );
-}
+                Descrição
 
-</script>
+            </label>
 
-    </div>
+            <input
+                id="descricao"
+                type="text"
+                placeholder="Ex.: Lidl, TIM, Salário...">
 
-</div>
+        </div>
+
+        <div class="campo">
+
+            <label>
+
+                Categoria
+
+            </label>
+
+            <select id="categoria">
+
+            </select>
+
+        </div>
+
+        <div class="campo">
+
+            <label>
+
+                Data
+
+            </label>
+
+            <input
+                id="data"
+                type="date">
+
+        </div>
+
+        <div class="botoes">
+
+            <button id="btnNovaCategoria">
+
+                Nova Categoria
+
+            </button>
+
+            <button id="btnSalvar">
+
+                Salvar
+
+            </button>
+
+        </div>
+    <section class="historico">
+
+        <div class="historico-topo">
+
+            <h2>
+
+                Histórico
+
+            </h2>
+
+            <input
+                id="pesquisa"
+                type="text"
+                placeholder="Pesquisar...">
+
+        </div>
+
+        <div
+            id="listaLancamentos"
+            class="lista-lancamentos">
+
+            <div class="vazio">
+
+                Nenhum lançamento cadastrado.
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <span>
+
+        Controle Financeiro dos Gustavos • Versão 1.0
+
+    </span>
+
+</footer>
+
+<script src="app.js"></script>
 
 </body>
+
 </html>
+    </section>
