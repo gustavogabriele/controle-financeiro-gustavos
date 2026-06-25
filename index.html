@@ -32,8 +32,39 @@
     </div>
 
 </header>
-
 <main>
+
+<nav class="menu">
+
+    <button
+        class="aba ativa"
+        data-aba="dashboard">
+
+        Dashboard
+
+    </button>
+
+    <button
+        class="aba"
+        data-aba="financas">
+
+        Finanças
+
+    </button>
+
+    <button
+        class="aba"
+        data-aba="poupanca">
+
+        Poupança
+
+    </button>
+
+</nav>
+
+<section
+    id="dashboard"
+    class="pagina ativa">
 
     <section class="dashboard">
 
@@ -42,7 +73,9 @@
             <span>Receitas</span>
 
             <h2 id="totalReceitas">
+
                 € 0,00
+
             </h2>
 
         </div>
@@ -52,7 +85,9 @@
             <span>Despesas</span>
 
             <h2 id="totalDespesas">
+
                 € 0,00
+
             </h2>
 
         </div>
@@ -62,7 +97,9 @@
             <span>Poupança</span>
 
             <h2 id="totalPoupanca">
+
                 € 0,00
+
             </h2>
 
         </div>
@@ -72,40 +109,36 @@
             <span>Saldo Disponível</span>
 
             <h2 id="saldoDisponivel">
+
                 € 0,00
+
             </h2>
 
         </div>
 
     </section>
 
+</section>
+
+<section
+    id="financas"
+    class="pagina">
+
     <section class="novo-lancamento">
 
-        <h2>
-            Novo Lançamento
-        </h2>
+        <h2>Novo Lançamento</h2>
 
         <div class="campo">
 
-            <label>
-
-                Tipo
-
-            </label>
+            <label>Tipo</label>
 
             <select id="tipo">
 
-                <option value="receita">
-                    Receita
-                </option>
+                <option value="receita">Receita</option>
 
-                <option value="despesa">
-                    Despesa
-                </option>
+                <option value="despesa">Despesa</option>
 
-                <option value="poupanca">
-                    Poupança
-                </option>
+                <option value="poupanca">Poupança</option>
 
             </select>
 
@@ -113,11 +146,7 @@
 
         <div class="campo">
 
-            <label>
-
-                Valor (€)
-
-            </label>
+            <label>Valor (€)</label>
 
             <input
                 id="valor"
@@ -129,26 +158,18 @@
 
         <div class="campo">
 
-            <label>
-
-                Descrição
-
-            </label>
+            <label>Descrição</label>
 
             <input
                 id="descricao"
                 type="text"
-                placeholder="Ex.: Lidl, TIM, Salário...">
+                placeholder="Ex.: Mercado Lidl">
 
         </div>
 
         <div class="campo">
 
-            <label>
-
-                Categoria
-
-            </label>
+            <label>Categoria</label>
 
             <select id="categoria">
 
@@ -158,11 +179,7 @@
 
         <div class="campo">
 
-            <label>
-
-                Data
-
-            </label>
+            <label>Data</label>
 
             <input
                 id="data"
@@ -172,19 +189,24 @@
 
         <div class="botoes">
 
-            <button id="btnNovaCategoria">
+            <button
+                id="btnNovaCategoria">
 
                 Nova Categoria
 
             </button>
 
-            <button id="btnSalvar">
+            <button
+                id="btnSalvar">
 
                 Salvar
 
             </button>
 
         </div>
+
+    </section>
+
     <section class="historico">
 
         <div class="historico-topo">
@@ -198,7 +220,7 @@
             <input
                 id="pesquisa"
                 type="text"
-                placeholder="Pesquisar...">
+                placeholder="Pesquisar">
 
         </div>
 
@@ -206,18 +228,31 @@
             id="listaLancamentos"
             class="lista-lancamentos">
 
-            <div class="vazio">
-
-                Nenhum lançamento cadastrado.
-
-            </div>
-
         </div>
 
     </section>
 
-</main>
+</section>
 
+<section
+    id="poupanca"
+    class="pagina">
+
+    <h2>
+
+        Poupança
+
+    </h2>
+
+    <p>
+
+        Nesta aba ficará o patrimônio e os investimentos.
+
+    </p>
+
+</section>
+
+</main>
 <footer>
 
     <span>
@@ -233,4 +268,3 @@
 </body>
 
 </html>
-    </section>
