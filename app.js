@@ -359,18 +359,20 @@ function atualizarHistorico(){
                         <br><br>
 
                         <button
-                            onclick="editarLancamento('${item.id}')">
+    data-id="${item.id}"
+    class="btnEditar">
 
-                            ✏️
+    ✏️
 
-                        </button>
+</button>
 
                         <button
-                            onclick="excluirLancamento('${item.id}')">
+    data-id="${item.id}"
+    class="btnExcluir">
 
-                            🗑️
+    🗑️
 
-                        </button>
+</button>
 
                     </div>
 
@@ -379,8 +381,23 @@ function atualizarHistorico(){
             `;
 
             listaLancamentos.appendChild(card);
+card.querySelector(".btnEditar")
+    .addEventListener("click", function(){
 
-        });
+        editarLancamento(
+            this.dataset.id
+        );
+
+    });
+
+card.querySelector(".btnExcluir")
+    .addEventListener("click", function(){
+
+        excluirLancamento(
+            this.dataset.id
+        );
+
+    });
 
 }
 
