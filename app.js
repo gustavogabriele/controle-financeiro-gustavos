@@ -562,10 +562,10 @@ function excluirLancamento(id){
 
     }
 
-    lancamentos =
-        lancamentos.filter(
-            item => item.id !== id
-        );
+lancamentos =
+    lancamentos.filter(
+        item => String(item.id) !== String(id)
+    );
 
     salvarDados();
 
