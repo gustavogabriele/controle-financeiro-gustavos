@@ -508,59 +508,36 @@ btnSalvar.addEventListener("click",()=>{
 });
 
 function editarLancamento(id){
-    
-alert("Editar clicado!");
-console.log(id);
-    
-    console.log("ID recebido:", id);
 
-console.log("Lançamentos:", lancamentos);
-
-const item =
-    lancamentos.find(
-        l => l.id === id
-    );
-
-console.log("Item encontrado:", item);
+    const item = lancamentos.find(l => String(l.id) === String(id));
 
     if(!item){
-
+        alert("Lançamento não encontrado.");
         return;
-
     }
 
-    idEmEdicao = id;
+    idEmEdicao = item.id;
 
-    tipo.value =
-        item.tipo;
+    tipo.value = item.tipo;
 
     carregarCategorias();
 
-    categoria.value =
-        item.categoria;
+    categoria.value = item.categoria;
 
-    valor.value =
-        item.valor;
+    valor.value = item.valor;
 
-    descricao.value =
-        item.descricao;
+    descricao.value = item.descricao;
 
-    campoData.value =
-        item.data;
+    campoData.value = item.data;
 
-    btnSalvar.textContent =
-        "Atualizar";
+    btnSalvar.textContent = "Atualizar";
 
-    document
-        .getElementById("financas")
-        .scrollIntoView({
-
-            behavior:"smooth"
-
-        });
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
-
 function excluirLancamento(id){
 
     if(
