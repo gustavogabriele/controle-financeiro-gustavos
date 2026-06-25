@@ -489,7 +489,10 @@ btnSalvar.addEventListener("click",()=>{
 });
 
 function editarLancamento(id){
-
+    
+alert("Editar clicado!");
+console.log(id);
+    
     const item =
         lancamentos.find(
             l => l.id === id
