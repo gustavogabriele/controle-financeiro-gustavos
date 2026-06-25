@@ -17,6 +17,7 @@ const STORAGE_CATEGORIAS = "cfg_categorias";
 let lancamentos = [];
 let idEmEdicao = null;
 let filtroAtual = "todos";
+let mesSelecionado = "";
 
 // ===============================
 // CATEGORIAS PADRÃO
@@ -90,6 +91,9 @@ const saldoDisponivel =
 
 const listaLancamentos =
     document.getElementById("listaLancamentos");
+
+const mesFiltro =
+    document.getElementById("mesFiltro");
 
 // ===============================
 // INICIALIZAÇÃO DOS DADOS
@@ -234,6 +238,15 @@ function atualizarDashboard(){
 
     lancamentos.forEach(item=>{
 
+    if(
+        mesSelecionado &&
+        !item.data.startsWith(mesSelecionado)
+    ){
+
+        return;
+
+    }
+
         switch(item.tipo){
 
             case "receita":
@@ -322,15 +335,24 @@ function atualizarHistorico(){
     .reverse()
     .filter(item => {
 
-        if(filtroAtual === "todos"){
+    if(
+        mesSelecionado &&
+        !item.data.startsWith(mesSelecionado)
+    ){
 
-            return true;
+        return false;
 
-        }
+    }
 
-        return item.tipo === filtroAtual;
+    if(filtroAtual === "todos"){
 
-    })
+        return true;
+
+    }
+
+    return item.tipo === filtroAtual;
+
+})
     .forEach(item=>{
 
             const card =
@@ -659,6 +681,25 @@ document
         atualizarHistorico();
 
     });
+mesFiltro.value =
+    new Date()
+        .toISOString()
+        .substring(0,7);
+
+mesSelecionado =
+    mesFiltro.value;
+
+mesFiltro.addEventListener("change",()=>{
+
+    mesSelecionado = mesFiltro.value;
+
+    alert("Mês selecionado: " + mesSelecionado);
+
+    atualizarDashboard();
+
+    atualizarHistorico();
+
+});
 function inicializarSistema(){
 
     carregarDados();
